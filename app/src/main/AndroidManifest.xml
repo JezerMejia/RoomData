@@ -13,28 +13,28 @@
         android:theme="@style/Theme.RoomData"
         tools:targetApi="31">
         <activity
-            android:name=".AddDataActivity"
+            android:name=".ui.add.AddDataActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".DeleteDataActivity"
+            android:name=".ui.delete.DeleteDataActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EditDataActivity"
+            android:name=".ui.edit.EditDataActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RequestDataActivity"
+            android:name=".ui.request.RequestDataActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
