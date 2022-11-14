@@ -12,6 +12,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.jezerm.roomdata.databinding.ActivityMainBinding
+import com.jezerm.roomdata.ui.add.AddDataActivity
+import com.jezerm.roomdata.ui.delete.DeleteDataActivity
+import com.jezerm.roomdata.ui.edit.EditDataActivity
+import com.jezerm.roomdata.ui.request.RequestDataActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,19 +48,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openRequestData() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, RequestDataActivity::class.java)
         startActivity(intent)
     }
     private fun openAddData() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, AddDataActivity::class.java)
         startActivity(intent)
     }
     private fun openEditData() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, EditDataActivity::class.java)
         startActivity(intent)
     }
     private fun openDeleteData() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, DeleteDataActivity::class.java)
         startActivity(intent)
     }
 
