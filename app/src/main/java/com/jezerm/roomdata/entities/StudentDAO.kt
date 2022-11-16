@@ -15,4 +15,7 @@ interface StudentDAO {
 
     @Update
     suspend fun update(student: Student)
+
+    @Query("DELETE FROM Student WHERE id =:id")
+    suspend fun delete(id:Int)
 }
