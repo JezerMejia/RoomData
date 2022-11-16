@@ -20,6 +20,16 @@ class RequestDataActivity : AppCompatActivity() {
         binding = ActivityRequestDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = "Datos de estudiantes"
+
+            // show back button on toolbar
+            // on back button press, it will navigate to parent activity
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         val db = AppDatabase.getInstance(applicationContext)
         val studentDao = db.studentDao()
 
@@ -35,5 +45,10 @@ class RequestDataActivity : AppCompatActivity() {
     private fun initData(students: List<Student>) {
         binding.rcvStudentList.layoutManager = LinearLayoutManager(this)
         binding.rcvStudentList.adapter = StudentAdapter(students)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }
