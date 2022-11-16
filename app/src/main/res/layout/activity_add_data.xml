@@ -48,7 +48,8 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:hint="ID" />
+                android:hint="ID"
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
@@ -186,7 +187,8 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:hint="Edad" />
+                android:hint="Edad"
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
