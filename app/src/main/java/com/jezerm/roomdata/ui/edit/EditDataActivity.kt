@@ -40,8 +40,8 @@ class EditDataActivity : AppCompatActivity() {
 
     private fun initData(students: List<Student>) {
         binding.rcvStudentList.layoutManager = LinearLayoutManager(this)
-        binding.rcvStudentList.adapter = StudentAdapter(students) {
-            openEditStudent(it)
+        binding.rcvStudentList.adapter = StudentAdapter(students) { student, i ->
+            openEditStudent(student)
         }
     }
 

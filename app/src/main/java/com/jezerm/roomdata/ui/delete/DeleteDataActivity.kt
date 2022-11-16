@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jezerm.roomdata.R
 import com.jezerm.roomdata.data.AppDatabase
 import com.jezerm.roomdata.databinding.ActivityEditDataBinding
 import com.jezerm.roomdata.entities.Student
@@ -35,16 +34,16 @@ class DeleteDataActivity : AppCompatActivity() {
         studentDao = db.studentDao()
         runBlocking {
             launch {
-                val students = studentDao.getAll()
+                val students = ArrayList(studentDao.getAll())
                 println(students)
                 initData(students)
             }
         }
     }
 
-    private fun initData(students: List<Student>) {
+    private fun initData(students: ArrayList<Student>) {
         binding.rcvStudentList.layoutManager = LinearLayoutManager(this)
-        binding.rcvStudentList.adapter = StudentAdapter(students) {
+        binding.rcvStudentList.adapter = StudentAdapter(students) { student, i ->
             val dialog= AlertDialog.Builder(this).apply {
                 setTitle("Borrar Estudiante")
                     .setMessage("Estas seguro de borrar este estudiante?")
@@ -54,7 +53,9 @@ class DeleteDataActivity : AppCompatActivity() {
                         val studentDao = db.studentDao()
                         runBlocking {
                             launch {
-                                studentDao.delete(it.id)
+                                studentDao.delete(student.id)
+                                students.removeAt(i)
+                                binding.rcvStudentList.adapter?.notifyItemRemoved(i)
                             }
                         }
                     }
@@ -67,7 +68,7 @@ class DeleteDataActivity : AppCompatActivity() {
     override fun onResume() {
         runBlocking {
             launch {
-                val students = studentDao.getAll()
+                val students = ArrayList(studentDao.getAll())
                 println(students)
                 initData(students)
             }

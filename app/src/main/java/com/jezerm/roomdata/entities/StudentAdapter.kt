@@ -7,7 +7,7 @@ import com.jezerm.roomdata.databinding.StudentItemBinding
 
 class StudentAdapter(
     var list: List<Student>,
-    private val clickListener: (Student) -> Unit = {}
+    private val clickListener: (Student, Int) -> Unit = { student: Student, i: Int -> }
 ) : RecyclerView.Adapter<StudentAdapter.StudentHolder>() {
 
     inner class StudentHolder(private val binding: StudentItemBinding) :
@@ -30,7 +30,7 @@ class StudentAdapter(
     override fun onBindViewHolder(holder: StudentHolder, position: Int) {
         holder.load(list[position])
         holder.itemView.setOnClickListener {
-            clickListener(list[position])
+            clickListener(list[position], position)
         }
     }
 
