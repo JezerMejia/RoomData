@@ -2,10 +2,12 @@ package com.jezerm.roomdata.entities
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ExpandableListView
 import androidx.recyclerview.widget.RecyclerView
 import com.jezerm.roomdata.databinding.StudentItemBinding
 
-class StudentAdapter(var list: List<Student>) : RecyclerView.Adapter<StudentAdapter.StudentHolder>() {
+class StudentAdapter(var list: List<Student>,
+                     private val clickListener: (Student) -> Unit = {}) : RecyclerView.Adapter<StudentAdapter.StudentHolder>() {
 
     inner class StudentHolder(private val binding: StudentItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -14,6 +16,7 @@ class StudentAdapter(var list: List<Student>) : RecyclerView.Adapter<StudentAdap
             with(binding) {
                 tvName.text = student.nombreCompleto
                 tvDetails.text = "${student.id} - ${student.carrera}"
+
             }
         }
     }
@@ -25,6 +28,9 @@ class StudentAdapter(var list: List<Student>) : RecyclerView.Adapter<StudentAdap
 
     override fun onBindViewHolder(holder: StudentHolder, position: Int) {
         holder.load(list[position])
+        holder.itemView.setOnClickListener{
+            clickListener(list[position])
+        }
     }
 
     override fun getItemCount(): Int {
